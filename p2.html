@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة التسجيل</title>
+    <!-- إضافة Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJ3Qp7pD2Z2K5oS0kd8wP5kM9VjY4M9V7g2m9By8hFqZ7WgqQ9Hn2fQf0aJ0" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* إعدادات الخطوط والخلفية */
+        body {
+            background-image: url('opp.png'); /* ضع هنا مسار الصورة */
+            background-size: 100% 100%; /* لتغطية كامل الصفحة */
+            background-position: center; /* تمركز الصورة في الوسط */
+            background-attachment: fixed; /* تثبيت الصورة عند التمرير */
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* الحاوية الرئيسية */
+        .signup-container {
+            background-color: #fff;
+            width: 400px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* العنوان */
+        .signup-title {
+            font-size: 2rem;
+            color: #2d3e50;
+            margin-bottom: 10px;
+        }
+
+        /* الوصف */
+        .signup-description {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* تنسيق الحقول */
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #ff7e5f;
+            outline: none;
+        }
+
+        /* زر التسجيل */
+        .signup-button {
+            background-color: #2d3e50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .signup-button:hover {
+            background-color: #ff7e5f;
+        }
+
+        /* تخصيص جدول */
+        .form-group table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .form-group table th,
+        .form-group table td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- الحاوية الرئيسية -->
+    <div class="signup-container">
+        <h1 class="signup-title">التسجيل</h1>
+        <p class="signup-description">قم بإنشاء حساب جديد للبدء في استخدام الموقع.</p>
+        
+        <form class="signup-form" id="signupForm">
+            <!-- اختيار نوع الحساب -->
+            <div class="form-group">
+                <label for="accountType">نوع الحساب</label>
+                <select id="accountType" name="accountType" required>
+                    <option value="" disabled selected>اختر نوع الحساب</option>
+                    <option value="owner">مؤجر</option>
+                    <option value="tenant">مستأجر</option>
+                </select>
+            </div>
+            <!-- الاسم الكامل -->
+            <div class="form-group">
+                <label for="fullName">الاسم الكامل</label>
+                <input type="text" id="fullName" name="fullName" placeholder="أدخل اسمك الكامل" required>
+            </div>
+
+            <!-- البريد الإلكتروني -->
+            <div class="form-group">
+                <label for="email">البريد الإلكتروني</label>
+                <input type="email" id="email" name="email" placeholder="example@email.com" required>
+            </div>
+
+            <!-- رقم الهاتف -->
+            <div class="form-group">
+                <label for="phone">رقم الهاتف</label>
+                <input type="tel" id="phone" name="phone" placeholder="أدخل رقم هاتفك" required>
+            </div>
+
+            <!-- كلمة المرور -->
+            <div class="form-group">
+                <label for="password">كلمة المرور</label>
+                <input type="password" id="password" name="password" placeholder="أدخل كلمة المرور" required>
+            </div>
+
+            <!-- تأكيد كلمة المرور -->
+            <div class="form-group">
+                <label for="confirmPassword">تأكيد كلمة المرور</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="تأكيد كلمة المرور" required>
+            </div>
+
+            <!-- الحقول الخاصة بالمؤجر -->
+            <div id="ownerFields" style="display:none;">
+                <div class="form-group">
+                    <label for="propertyAddress">عنوان العقار أو المدينة</label>
+                    <input type="text" id="propertyAddress" name="propertyAddress" placeholder="أدخل عنوان العقار أو المدينة" required>
+                </div>
+                <div class="form-group">
+                    <label for="apartmentsCount">عدد الشقق الموجودة لديك</label>
+                    <input type="number" id="apartmentsCount" name="apartmentsCount" placeholder="أدخل عدد الشقق" required>
+                </div>
+                <div class="form-group">
+                    <label for="nationalId">رقم الهوية أو جواز السفر</label>
+                    <input type="text" id="nationalId" name="nationalId" placeholder="أدخل رقم الهوية أو جواز السفر" required>
+                </div>
+                <div class="form-group">
+                    <label for="ownerPhoto">صورة شخصية</label>
+                    <input type="file" id="ownerPhoto" name="ownerPhoto" required>
+                </div>
+            </div>
+
+            <!-- الحقول الخاصة بالمستأجر -->
+            <div id="tenantFields" style="display:none;">
+                <div class="form-group">
+                    <label for="fullNameTenant">الاسم الرباعي</label>
+                    <input type="text" id="fullNameTenant" name="fullNameTenant" placeholder="أدخل اسمك الرباعي" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">العمر</label>
+                    <input type="number" id="age" name="age" placeholder="أدخل عمرك" required>
+                </div>
+                <div class="form-group">
+                    <label for="maritalStatus">الحالة الاجتماعية</label>
+                    <select id="maritalStatus" name="maritalStatus" required>
+                        <option value="single">أعزب</option>
+                        <option value="married">متزوج</option>
+                        <option value="other">غير ذلك</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="nationality">الجنسية</label>
+                    <input type="text" id="nationality" name="nationality" placeholder="أدخل جنسيتك" required>
+                </div>
+                <div class="form-group">
+                    <label for="identityPhoto">صورة عن الهوية</label>
+                    <input type="file" id="identityPhoto" name="identityPhoto" required>
+                </div>
+                <div class="form-group">
+                    <label for="tenantPhoto">صورة شخصية</label>
+                    <input type="file" id="tenantPhoto" name="tenantPhoto" required>
+                </div>
+            </div>
+
+            <!-- زر التسجيل -->
+            <button type="submit" class="signup-button">تسجيل</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('accountType').addEventListener('change', function() {
+            var accountType = this.value;
+            if (accountType === 'owner') {
+                document.getElementById('ownerFields').style.display = 'block';
+                document.getElementById('tenantFields').style.display = 'none';
+            } else if (accountType === 'tenant') {
+                document.getElementById('tenantFields').style.display = 'block';
+                document.getElementById('ownerFields').style.display = 'none';
+            }
+        });
+    </script>
+    <!-- إضافة JavaScript لـ Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0c7B3mVsus2jpHVSg5V2TQAx5G/U4r5Ox5DHDhpFFzVb3C4p" crossorigin="anonymous"></script>
+</body>
+</html>

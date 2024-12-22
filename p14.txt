@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معلومات المستأجر</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f4f9;
+            font-family: 'Cairo', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .title {
+            text-align: center;
+            font-size: 2rem;
+            color: #2d3e50;
+            margin-bottom: 20px;
+        }
+        .info-group {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        .info-group label {
+            font-weight: bold;
+            color: #2d3e50;
+        }
+        .info-group p {
+            margin: 5px 0;
+            color: #555;
+        }
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .back-btn {
+            display: block;
+            width: 150px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #2d3e50;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-btn:hover {
+            background-color: #ff7e5f;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="title">معلومات المستأجر</h1>
+
+        <!-- صورة شخصية للمستأجر -->
+        <img id="profileImage" class="profile-image" src="" alt="صورة المستأجر">
+
+        <!-- معلومات المستأجر -->
+        <div id="tenantInfo">
+            <div class="info-group">
+                <label for="fullNameTenant">الاسم الرباعي</label>
+                <p id="fullNameTenant"></p>
+            </div>
+            <div class="info-group">
+                <label for="age">العمر</label>
+                <p id="age"></p>
+            </div>
+            <div class="info-group">
+                <label for="maritalStatus">الحالة الاجتماعية</label>
+                <p id="maritalStatus"></p>
+            </div>
+            <div class="info-group">
+                <label for="nationality">الجنسية</label>
+                <p id="nationality"></p>
+            </div>
+            <div class="info-group">
+                <label for="identityPhoto">صورة عن الهوية</label>
+                <p id="identityPhoto"></p>
+            </div>
+            <div class="info-group">
+                <label for="tenantPhoto">صورة شخصية</label>
+                <p id="tenantPhoto"></p>
+            </div>
+        </div>
+
+        <!-- زر العودة -->
+        <a href="signup.html" class="back-btn">العودة إلى التسجيل</a>
+    </div>
+
+    <script>
+        // جلب البيانات من localStorage وعرضها
+        window.onload = function () {
+            let tenantData = JSON.parse(localStorage.getItem("tenantData"));
+            
+            if (tenantData) {
+                document.getElementById("fullNameTenant").innerText = tenantData.fullNameTenant;
+                document.getElementById("age").innerText = tenantData.age;
+                document.getElementById("maritalStatus").innerText = tenantData.maritalStatus;
+                document.getElementById("nationality").innerText = tenantData.nationality;
+                document.getElementById("identityPhoto").innerText = tenantData.identityPhoto;
+                document.getElementById("tenantPhoto").innerText = tenantData.tenantPhoto;
+
+                // عرض الصورة الشخصية للمستأجر
+                let profileImage = document.getElementById("profileImage");
+                profileImage.src = URL.createObjectURL(tenantData.tenantPhoto); // تحديث الصورة
+            }
+        };
+    </script>
+</body>
+</html>

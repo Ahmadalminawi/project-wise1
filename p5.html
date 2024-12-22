@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شقق للإيجار</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background-image: url('p.JPG');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 120px 0;
+        }
+
+        .hero-section h2 {
+            font-size: 3em;
+            font-weight: bold;
+        }
+
+        .hero-section p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: #333;
+        }
+
+        .navbar-brand {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .nav-link {
+            color: white !important;
+        }
+
+        /* Filters Section */
+        .filters {
+            margin-top: 40px;
+        }
+
+        .filters h4 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .property-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .property-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .property-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .property-card .card-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .property-card .card-text {
+            color: #555;
+        }
+
+        .property-card button {
+            margin-top: 10px;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .filter-range-value {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">إيجار بلس</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="p14.html">صفحتي</a></li>
+                    <li class="nav-item"><a class="nav-link" href="p1.html">تسجيل الخروج</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h2>ابحث عن شقتك المثالية</h2>
+        <p>استعرض الشقق المعروضة بسهولة باستخدام الفلاتر الخاصة بنا</p>
+    </section>
+
+    <!-- Filters Section -->
+    <div class="container filters">
+        <div class="row">
+            <div class="col-md-3">
+                <h4>تصفية الشقق</h4>
+                <form id="filtersForm">
+<div class="mb-3">
+                        <label for="search" class="form-label">بحث عن شقة</label>
+                        <input type="text" class="form-control" id="search" placeholder="ابحث عن شقة">
+                    </div>
+
+                   <div class="mb-3">
+                        <label for="priceRange" class="form-label">السعر</label>
+                        <input type="range" class="form-range" id="priceRangeMin" min="0" max="1000" step="10">
+                        <input type="range" class="form-range" id="priceRangeMax" min="0" max="1000" step="10">
+                        <div class="filter-range-value" id="priceValue">من 0 إلى 1000</div>
+                    </div>
+
+                    <!-- المساحة من إلى -->
+                    <div class="mb-3">
+                        <label for="size" class="form-label">مساحة الشقة (م²)</label>
+                        <input type="range" class="form-range" id="sizeMin" min="20" max="400" step="10">
+                        <input type="range" class="form-range" id="sizeMax" min="20" max="400" step="10">
+                        <div class="filter-range-value" id="sizeValue">من 20 إلى 400 متر مربع</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rooms" class="form-label">عدد الغرف</label>
+                        <select class="form-select" id="rooms">
+                            <option value="1">غرفة واحدة</option>
+                            <option value="2">غرفتين</option>
+                            <option value="3">ثلاث غرف</option>
+                            <option value="4">أربع غرف</option>
+                            <option value="5">+5</option>
+
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="bathrooms" class="form-label">عدد الحمامات</label>
+                        <select class="form-select" id="bathrooms">
+                            <option value="1">حمام واحد</option>
+                            <option value="2">حمامين</option>
+                            <option value="3">ثلاثة حمامات</option>
+                            <option value="4">أربعة حمامات</option>
+                            <option value="5">+5</option>
+
+                        </select>
+                    </div>
+                   
+                    <div class="mb-3">
+                        <label for="furnished" class="form-label">مفروشة</label>
+                        <select class="form-select" id="furnished">
+                            <option value="yes">مفروشة</option>
+                            <option value="no">غير مفروشة</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rentalDuration" class="form-label">مدة الإيجار</label>
+                        <select class="form-select" id="rentalDuration">
+                            <option value="daily">يومي</option>
+                            <option value="weekly">أسبوعي</option>
+                            <option value="monthly">شهري</option>
+                            <option value="yearly">سنوي</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="floor" class="form-label">الطابق</label>
+                        <select class="form-select" id="floor">
+                            <option value="ground">أرضي</option>
+                            <option value="first">أول</option>
+                            <option value="second">ثاني</option>
+                            <option value="third">ثالث</option>
+                            <option value="oveeer">4+</option>
+
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="buildingAge" class="form-label">عمر البناء (بالسنوات)</label>
+                        <select class="form-select" id="buildingAge">
+                            <option value="1-5">1-5 سنوات</option>
+                            <option value="6-10">6-10 سنوات</option>
+                            <option value="11-20">11-20 سنة</option>
+                            <option value="21+">أكثر من 20 سنة</option>
+                        </select>
+                    </div>
+                                        <button type="submit" class="btn btn-primary w-100">فلتره </button>
+                </form>
+            </div>
+
+            <!-- Properties Section -->
+            <div class="col-md-9">
+                <h4>الشقق المعروضة</h4>
+                <div class="row" id="property-list">
+                    <!-- Property 1 -->
+                    <div class="col-md-4">
+                        <div class="property-card">
+                            <img src="https://via.placeholder.com/300x200" alt="شقة 1">
+                            <div class="card-body">
+                                <h5 class="card-title">شقة في المدينة</h5>
+                                <p class="card-text">3 غرف، 2 حمام، 120 متر مربع</p>
+            <button class="btn btn-info" onclick="window.open('p4.html', '_blank');">تفاصيل الشقة</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Property 2 -->
+                    <div class="col-md-4">
+                        <div class="property-card">
+                            <img src="https://via.placeholder.com/300x200" alt="شقة 2">
+                            <div class="card-body">
+                                <h5 class="card-title">شقة في الضواحي</h5>
+                                <p class="card-text">2 غرفة، 1 حمام، 80 متر مربع</p>
+            <button class="btn btn-info" onclick="window.open('p4.html', '_blank');">تفاصيل الشقة</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Property 3 -->
+                    <div class="col-md-4">
+                        <div class="property-card">
+                            <img src="https://via.placeholder.com/300x200" alt="شقة 3">
+                            <div class="card-body">
+                                <h5 class="card-title">شقة في المركز</h5>
+                                <p class="card-text">4 غرف، 3 حمام، 150 متر مربع</p>
+            <button class="btn btn-info" onclick="window.open('p4.html', '_blank');">تفاصيل الشقة</button>
+                            </div>
+                        </div>
+                    </div><div class="col-md-4">
+                        <div class="property-card">
+                            <img src="https://via.placeholder.com/300x200" alt="شقة 3">
+                            <div class="card-body">
+                                <h5 class="card-title">شقة في المركز</h5>
+                                <p class="card-text">4 غرف، 3 حمام، 150 متر مربع</p>
+            <button class="btn btn-info" onclick="window.open('p4.html', '_blank');">تفاصيل الشقة</button>
+                            </div>
+                        </div>
+                    </div>
+<div class="col-md-4">
+                        <div class="property-card">
+                            <img src="https://via.placeholder.com/300x200" alt="شقة 3">
+                            <div class="card-body">
+                                <h5 class="card-title">شقة في المركز</h5>
+                                <p class="card-text">4 غرف، 3 حمام، 150 متر مربع</p>
+            <button class="btn btn-info" onclick="window.open('p4.html', '_blank');">تفاصيل الشقة</button>
+                            </div>
+                        </div>
+                    </div>
+<div class="col-md-4">
+                        <div class="property-card">
+                            <img src="https://via.placeholder.com/300x200" alt="شقة 3">
+                            <div class="card-body">
+                                <h5 class="card-title">شقة في المركز</h5>
+                                <p class="card-text">4 غرف، 3 حمام، 150 متر مربع</p>
+            <button class="btn btn-info" onclick="window.open('p4.html', '_blank');">تفاصيل الشقة</button>
+                            </div>
+                        </div>
+                    </div>
+<div class="col-md-4">
+                        <div class="property-card">
+                            <img src="https://via.placeholder.com/300x200" alt="شقة 3">
+                            <div class="card-body">
+                                <h5 class="card-title">شقة في المركز</h5>
+                                <p class="card-text">4 غرف، 3 حمام، 150 متر مربع</p>
+            <button class="btn btn-info" onclick="window.open('p4.html', '_blank');">تفاصيل الشقة</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 إيجار بلس - جميع الحقوق محفوظة</p>
+    </div>
+
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // الحصول على عناصر الفلاتر
+    const priceRangeMin = document.getElementById("priceRangeMin");
+    const priceRangeMax = document.getElementById("priceRangeMax");
+    const sizeMin = document.getElementById("sizeMin");
+    const sizeMax = document.getElementById("sizeMax");
+    const roomsSelect = document.getElementById("rooms");
+    const bathroomsSelect = document.getElementById("bathrooms");
+    const furnishedSelect = document.getElementById("furnished");
+    const rentalDurationSelect = document.getElementById("rentalDuration");
+    const floorSelect = document.getElementById("floor");
+    const buildingAgeSelect = document.getElementById("buildingAge");
+    const searchInput = document.getElementById("search");
+    const filterButton = document.querySelector("button[type='submit']");
+
+    // تحديث قيم السعر والمساحة عند تحريك المنزلقات
+    priceRangeMin.addEventListener("input", updatePriceValue);
+    priceRangeMax.addEventListener("input", updatePriceValue);
+    sizeMin.addEventListener("input", updateSizeValue);
+    sizeMax.addEventListener("input", updateSizeValue);
+
+    function updatePriceValue() {
+        const minPrice = priceRangeMin.value;
+        const maxPrice = priceRangeMax.value;
+        document.getElementById("priceValue").innerText = `من ${minPrice} إلى ${maxPrice}`;
+    }
+
+    function updateSizeValue() {
+        const minSize = sizeMin.value;
+        const maxSize = sizeMax.value;
+        document.getElementById("sizeValue").innerText = `من ${minSize} إلى ${maxSize} متر مربع`;
+    }
+
+    // وظيفة تطبيق الفلاتر
+    filterButton.addEventListener("click", function(event) {
+        event.preventDefault();
+
+        const minPrice = parseInt(priceRangeMin.value);
+        const maxPrice = parseInt(priceRangeMax.value);
+        const minSize = parseInt(sizeMin.value);
+        const maxSize = parseInt(sizeMax.value);
+        const rooms = roomsSelect.value;
+        const bathrooms = bathroomsSelect.value;
+        const furnished = furnishedSelect.value;
+        const rentalDuration = rentalDurationSelect.value;
+        const floor = floorSelect.value;
+        const buildingAge = buildingAgeSelect.value;
+        const search = searchInput.value.toLowerCase();
+
+        // تصفية الشقق بناءً على الفلاتر
+        const properties = document.querySelectorAll(".property-card");
+        properties.forEach(property => {
+            const priceText = property.querySelector(".card-text").innerText;
+            const sizeText = property.querySelector(".card-text").innerText;
+            const roomsText = property.querySelector(".card-text").innerText;
+            const bathroomsText = property.querySelector(".card-text").innerText;
+
+            const priceMatch = priceText.includes(`من ${minPrice} إلى ${maxPrice}`);
+            const sizeMatch = sizeText.includes(`من ${minSize} إلى ${maxSize}`);
+            const roomsMatch = rooms === "any" || roomsText.includes(`${rooms}`);
+            const bathroomsMatch = bathrooms === "any" || bathroomsText.includes(`${bathrooms}`);
+            const searchMatch = search === "" || property.querySelector(".card-title").innerText.toLowerCase().includes(search);
+
+            if (priceMatch && sizeMatch && roomsMatch && bathroomsMatch && searchMatch) {
+                property.style.display = "block";
+            } else {
+                property.style.display = "none";
+            }
+        });
+    });
+</script>
+
+
+</body>
+</html>

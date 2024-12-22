@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استعادة كلمة المرور</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle, #3b8d99, #6b62f0);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .reset-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            width: 420px;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .reset-title {
+            font-size: 2.5rem;
+            color: #3b8d99;
+            margin-bottom: 10px;
+        }
+
+        .reset-description {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+            position: relative;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 40px 12px 15px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            transition: box-shadow 0.3s, border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: #6b62f0;
+            outline: none;
+            box-shadow: 0 0 10px rgba(107, 98, 240, 0.5);
+        }
+
+        .reset-button {
+            background: linear-gradient(135deg, #6b62f0, #3b8d99);
+            color: white;
+            padding: 12px 20px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 100%;
+        }
+
+        .reset-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(107, 98, 240, 0.5);
+        }
+
+        .back-to-login {
+            margin-top: 20px;
+        }
+
+        .back-to-login a {
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: #6b62f0;
+            transition: color 0.3s, text-decoration 0.3s;
+        }
+
+        .back-to-login a:hover {
+            color: #3b8d99;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- حاوية استعادة كلمة المرور -->
+    <div class="reset-container">
+        <h1 class="reset-title">استعادة كلمة المرور</h1>
+        <p class="reset-description">أدخل عنوان بريدك الإلكتروني للحصول على تعليمات لاستعادة كلمة المرور.</p>
+
+        <form class="reset-form">
+            <!-- حقل البريد الإلكتروني -->
+            <div class="form-group">
+                <label for="email">البريد الإلكتروني</label>
+                <input type="email" id="email" name="email" placeholder="أدخل بريدك الإلكتروني" required>
+            </div>
+
+            <!-- زر استعادة كلمة المرور -->
+            <button type="submit" class="reset-button">إرسال رابط الاستعادة</button>
+        </form>
+
+        <!-- رابط العودة إلى صفحة تسجيل الدخول -->
+        <div class="back-to-login">
+            <a href="p3.html">عودة إلى صفحة تسجيل الدخول</a>
+        </div>
+    </div>
+
+</body>
+</html>
